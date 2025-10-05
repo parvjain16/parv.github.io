@@ -1,29 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parv Jain</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 700px;
-      margin: 40px auto;
-      line-height: 1.6;
-    }
-    h1 {
-      color: #333;
-    }
-    a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parv Jain - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 1s ease, color 1s ease, border-color 1s ease, box-shadow 1s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: rgb(220, 223, 226);
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: rgb(220, 223, 226);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            padding: 0 20px;
+        }
+
+        .nav-container a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-container a:hover {
+            color: #01579B;
+        }
+
+        .nav-container a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #000000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-container a:hover::after {
+            width: 100%;
+        }
+
+        .nav-container a.active {
+            color: #01579B;
+            font-weight: 600;
+        }
+
+        .dark-toggle {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #000000;
+            transition: transform 0.3s ease, color 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .dark-toggle:hover {
+            transform: rotate(15deg);
+            color: #1a73e8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .links a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #0d47a1;
+            text-decoration: underline;
+        }
+
+        .email {
+            font-size: 1.1rem;
+            color: #000000;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #000000;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .highlights {
+            text-align: left;
+            width: 100%;
+        }
+
+        .highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .highlights li {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #000000;
+            margin-bottom: 20px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .highlights li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #1a73e8;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            margin-top: 60px;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .project-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid #1a73e8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            background-color: #E0E0E0;
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #333333;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.dark-mode nav {
+            background-color: #121212;
+        }
+
+        body.dark-mode .nav-container a {
+            color: #ffffff;
+        }
+
+        body.dark-mode .nav-container a:hover::after {
+            background-color: #ffffff;
+        }
+
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode p,
+        body.dark-mode li,
+        body.dark-mode .email,
+        body.dark-mode .description,
+        body.dark-mode .subtitle {
+            color: #ffffff;
+        }
+
+        body.dark-mode .project-card {
+            background-color: #000000;
+            color: #ffffff;
+            border-left: 4px solid #90caf9;
+        }
+
+        body.dark-mode .project-card:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        body.dark-mode .project-card h3,
+        body.dark-mode .project-card p {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Hi, I’m Parv Jain 👋</h1>
-  <p>Welcome to my personal website!</p>
-  <p>This site is hosted on <a href="https://github.com/parvjain16/parv.github.io">GitHub Pages</a>.</p>
-  <p>Email me at <a href="mailto:your@email.com">your@email.com</a></p>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="active">Home</a>
+            <a href="project.html">Projects</a>
+            <a href="finance.html">Finance</a>
+            <a href="book.html">Books</a>
+            <button id="darkModeToggle" class="dark-toggle">🌙</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Parv Jain</h1>
+                <p class="subtitle">Computer Science and Business student at Indiana University</p>
+                
+                <div class="links">
+                    <a href="https://www.linkedin.com/in/parvjjain/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/parvjain16" target="_blank">GitHub</a>
+                </div>
+
+                <p class="email">parv.jjain@gmail.com</p>
+
+                <div class="description">
+                    <p>I am a sophomore studying computer science and business, with a passion for Technology, Financial Services, and AI. I have contributed to research at OpenAI analyzing how student use AI in their education. At Fiddler, I worked on researched and analyzing venture capital firms to lead the upcoming funding round. I have won multiple case competitions, showcasing my analytical and problem-solving skills in real-world business scenarios. My career interests lie at the intersection of Product Management and Software Engineering, where I aim to build technology products that make a meaningful impact in the world!</p>
+                </div>
+
+                <div class="highlights">
+                    <ul>
+                        <li><strong>1st Place - Consulting Case Competition:</strong> 1st of 25 teams, created a consulting pitch to enhance customer experience and operations to improve efficiency, and drive revenue growth for a consumer focused company</li>
+                        <li><strong>1st Place - Private Wealth Management Case Competition:</strong> 1st of 45+ teams, analyzed a complex high net worth client case and developed a comprehensive private wealth management strategy allocating a $110M portfolio through using quantitative analysis</li>
+                        <li><strong>OpenAI Student Researcher:</strong> Selected as an OpenAI student researcher collaborating with OpenAI's community team, on exploring how students integrate ChatGPT into their daily lives and identifying ways to better support student learning outcomes</li>
+                        <li><strong>Fiddler AI Summer Internship:</strong> Researched and analyzed 50+ venture capital firms to identify potential lead and co-investors for a $50M+ Series C round, evaluating investor fit based on portfolio composition, check size, and historical investment patterns</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="cruise.jpg" alt="Parv Jain">
+            </div>
+        </section>
+
+        <h2>Projects</h2>
+        
+        <div class="project-card">
+            <h3>AI-Powered Math Assistant</h3>
+            <p>An intelligent math assistant that revolutionizes the way students study. This AI-powered application reads your handwritten or typed notes and provides contextual explanations, generates personalized quizzes, and creates comprehensive summaries to enhance your learning experience. Built as a desktop application with overlay functionality, it seamlessly integrates with any application on your computer, allowing you to get help without switching contexts. The project leverages advanced machine learning models and natural language processing to understand mathematical concepts and provide accurate, helpful assistance in real-time.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Personal Portfolio Website</h3>
+            <p>A modern, responsive portfolio website built from scratch using HTML, CSS, and JavaScript. Hosted on GitHub Pages, this project showcases clean design principles and user experience best practices. The website features a mobile-responsive layout, smooth animations, and an intuitive navigation structure. Developed using VS Code with version control through Git, this project demonstrates proficiency in front-end web development, deployment workflows, and modern web standards. The site serves as a digital resume and project showcase, highlighting my technical skills and professional journey.</p>
+        </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById("darkModeToggle");
+        const body = document.body;
+
+        if (localStorage.getItem("darkMode") === "enabled") {
+            body.classList.add("dark-mode");
+            toggleButton.textContent = "☀️";
+        }
+
+        toggleButton.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            const isDark = body.classList.contains("dark-mode");
+            toggleButton.textContent = isDark ? "☀️" : "🌙";
+            localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+        });
+    </script>
 </body>
 </html>

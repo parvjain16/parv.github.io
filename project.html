@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Parv Jain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 1s ease, color 1s ease, border-color 1s ease, box-shadow 1s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: rgb(220, 223, 226);
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: rgb(220, 223, 226);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            padding: 0 20px;
+        }
+
+        .nav-container a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-container a:hover {
+            color: #01579B;
+        }
+
+        .nav-container a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #000000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-container a:hover::after {
+            width: 100%;
+        }
+
+        .nav-container a.active {
+            color: #01579B;
+            font-weight: 600;
+        }
+
+        .dark-toggle {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #000000;
+            transition: transform 0.3s ease, color 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .dark-toggle:hover {
+            transform: rotate(15deg);
+            color: #1a73e8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000000;
+            text-align: center;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #000000;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #1a73e8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background-color: #E0E0E0;
+        }
+
+        .project-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .project-card .tech-stack {
+            font-size: 0.9rem;
+            color: #1a73e8;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #333333;
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.dark-mode nav {
+            background-color: #121212;
+        }
+
+        body.dark-mode .nav-container a {
+            color: #ffffff;
+        }
+
+        body.dark-mode .nav-container a:hover::after {
+            background-color: #ffffff;
+        }
+
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode p,
+        body.dark-mode .intro {
+            color: #ffffff;
+        }
+
+        body.dark-mode .project-card {
+            background-color: #000000;
+            color: #ffffff;
+            border-left: 4px solid #90caf9;
+        }
+
+        body.dark-mode .project-card:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        body.dark-mode .project-card .tech-stack {
+            color: #90caf9;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="project.html" class="active">Projects</a>
+            <a href="finance.html">Finance</a>
+            <a href="book.html">Books</a>
+            <button id="darkModeToggle" class="dark-toggle">🌙</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>My Projects</h1>
+        <p class="intro">A collection of projects I've built and contributed to</p>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <h2>AI-Powered Math Assistant</h2>
+                <p class="tech-stack">Python • Machine Learning • NLP • Desktop Application</p>
+                <p>An intelligent math assistant that revolutionizes the way students study. This AI-powered application reads your handwritten or typed notes and provides contextual explanations, generates personalized quizzes, and creates comprehensive summaries to enhance your learning experience. Built as a desktop application with overlay functionality, it seamlessly integrates with any application on your computer, allowing you to get help without switching contexts. The project leverages advanced machine learning models and natural language processing to understand mathematical concepts and provide accurate, helpful assistance in real-time.</p>
+            </div>
+
+            <div class="project-card">
+                <h2>Personal Portfolio Website</h2>
+                <p class="tech-stack">HTML • CSS • JavaScript • GitHub Pages</p>
+                <p>A modern, responsive portfolio website built from scratch using HTML, CSS, and JavaScript. Hosted on GitHub Pages, this project showcases clean design principles and user experience best practices. The website features a mobile-responsive layout, smooth animations, and an intuitive navigation structure. Developed using VS Code with version control through Git, this project demonstrates proficiency in front-end web development, deployment workflows, and modern web standards.</p>
+            </div>
+
+            <div class="project-card">
+                <h2>Venture Capital Research Platform</h2>
+                <p class="tech-stack">Data Analysis • Market Research • Investment Strategy</p>
+                <p>Researched and analyzed 50+ venture capital firms to identify potential lead and co-investors for a $50M+ Series C round. Evaluated investor fit based on portfolio composition, check size, and historical investment patterns. Conducted fundamental research on the AI sector by analyzing investment and portfolio activity across Venture Capital, Private Equity, and Investment firms. Developed comprehensive investor profiles and outreach materials for executive leadership.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toggleButton = document.getElementById("darkModeToggle");
+        const body = document.body;
+
+        if (localStorage.getItem("darkMode") === "enabled") {
+            body.classList.add("dark-mode");
+            toggleButton.textContent = "☀️";
+        }
+
+        toggleButton.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+            const isDark = body.classList.contains("dark-mode");
+            toggleButton.textContent = isDark ? "☀️" : "🌙";
+            localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+        });
+    </script>
+</body>
+</html>
