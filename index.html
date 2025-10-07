@@ -319,6 +319,42 @@
                 font-size: 2rem;
             }
         }
+        /* Social Icons */
+        .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        }
+
+        /* Default look */
+        .social-icons img {
+        width: 32px;
+        height: 32px;
+        filter: grayscale(0%);
+        transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        /* Hover effect */
+        .social-icons img:hover {
+        transform: translateY(-3px);
+        filter: grayscale(0%);
+        }
+
+        /* Only invert GitHub icon in dark mode */
+        body.dark-mode .github-icon {
+        filter: invert(1) brightness(1.2);
+        }
+
+        /* Keep LinkedIn icon normal in dark mode */
+        body.dark-mode .linkedin-icon {
+        filter: none;
+        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -338,10 +374,15 @@
                 <h1>Parv Jain</h1>
                 <p class="subtitle">Computer Science and Business student at Indiana University</p>
                 
-                <div class="links">
-                    <a href="https://www.linkedin.com/in/parvjjain/" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/parvjain16" target="_blank">GitHub</a>
-                </div>
+            <div class="social-icons">
+            <a href="https://github.com/parvjain16" target="_blank">
+                <img class="github-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/parvjjain/" target="_blank">
+                <img class="linkedin-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
+            </a>
+            </div>
+
 
                 <p class="email">parv.jjain@gmail.com</p>
 
@@ -364,17 +405,7 @@
             </div>
         </section>
 
-        <h2>Projects</h2>
-        
-        <div class="project-card">
-            <h3>AI-Powered Math Assistant</h3>
-            <p>An intelligent math assistant that revolutionizes the way students study. This AI-powered application reads your handwritten or typed notes and provides contextual explanations, generates personalized quizzes, and creates comprehensive summaries to enhance your learning experience. Built as a desktop application with overlay functionality, it seamlessly integrates with any application on your computer, allowing you to get help without switching contexts. The project leverages advanced machine learning models and natural language processing to understand mathematical concepts and provide accurate, helpful assistance in real-time.</p>
-        </div>
 
-        <div class="project-card">
-            <h3>Personal Portfolio Website</h3>
-            <p>A modern, responsive portfolio website built from scratch using HTML, CSS, and JavaScript. Hosted on GitHub Pages, this project showcases clean design principles and user experience best practices. The website features a mobile-responsive layout, smooth animations, and an intuitive navigation structure. Developed using VS Code with version control through Git, this project demonstrates proficiency in front-end web development, deployment workflows, and modern web standards. The site serves as a digital resume and project showcase, highlighting my technical skills and professional journey.</p>
-        </div>
     </div>
 
     <script>
